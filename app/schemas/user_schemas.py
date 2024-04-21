@@ -189,7 +189,7 @@ class UserUpdate(BaseModel):
             raise ValueError("Profile picture URL must point to a valid image file (JPEG, PNG).")
         return v
 
-    @validator('username')
+    @validator('username', check_fields=False)
     def normalize_username(cls, v):
         if v is None:
             raise ValueError("Username is required.")

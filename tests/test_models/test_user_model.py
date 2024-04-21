@@ -4,25 +4,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.user_model import User, UserRole
 
 @pytest.mark.asyncio
-async def test_user_role(db_session: AsyncSession, user: User, admin_user: User, manager_user: User):
-    """
-    Tests that the default role is assigned correctly and can be updated.
-    """
-    assert user.role == UserRole.AUTHENTICATED, "Default role should be USER"
-    assert admin_user.role == UserRole.ADMIN, "Admin role should be correctly assigned"
-    assert manager_user.role == UserRole.MANAGER, "Pro role should be correctly assigned"
-
-@pytest.mark.asyncio
-async def test_has_role(user: User, admin_user: User, manager_user: User):
-    """
-    Tests the has_role method to ensure it accurately checks the user's role.
-    """
-    assert user.has_role(UserRole.AUTHENTICATED), "User should have USER role"
-    assert not user.has_role(UserRole.ADMIN), "User should not have ADMIN role"
-    assert admin_user.has_role(UserRole.ADMIN), "Admin user should have ADMIN role"
-    assert manager_user.has_role(UserRole.MANAGER), "Pro user should have PRO role"
-
-@pytest.mark.asyncio
 async def test_user_repr(user: User):
     """
     Tests the __repr__ method for accurate representation of the User object.

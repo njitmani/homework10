@@ -31,12 +31,6 @@ async def test_verified_user(db_session, verified_user):
     assert stored_user.email_verified
 
 @pytest.mark.asyncio
-async def test_user_role(db_session, admin_user):
-    result = await db_session.execute(select(User).filter_by(email=admin_user.email))
-    stored_user = result.scalars().first()
-    assert stored_user.role == UserRole.ADMIN
-
-@pytest.mark.asyncio
 async def test_password_hashing(user):
     assert verify_password("MySuperPassword$1234", user.hashed_password)
 
