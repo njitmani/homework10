@@ -1,4 +1,4 @@
-# Siddharth Kundu
+# Maniteja
 
 ## Event Manager Company: Software QA Analyst/Developer Onboarding Assignment
 After setting up and following the guide, fastapi is up and running.
