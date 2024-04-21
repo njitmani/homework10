@@ -98,6 +98,10 @@ class UserBase(BaseModel):
         if not re.search(r"\.(jpg|jpeg|png)$", parsed_url.path):
             raise ValueError("Profile picture URL must point to a valid image file (JPEG, PNG).")
         return v
+    
+    @validator('email', pre=True)
+    def normalize_email(cls, v):
+        return v.strip().lower() if v else None
 
     class Config:
         json_schema_extra = {
